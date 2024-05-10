@@ -30,7 +30,7 @@ function JobsList() {
   const handleScroll = () => {
     // check if the user has scrolled to the bottom of the page
     if (
-      window.innerHeight + document.scrollingElement?.scrollTop! ===
+      window.innerHeight + window.scrollY ===
       document.documentElement.offsetHeight
     ) {
       console.log("Scrolled to the bottom", offset + limit);
