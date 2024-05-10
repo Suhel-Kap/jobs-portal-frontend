@@ -6,6 +6,6 @@ export const fetchJobs = (limit: number, offset: number) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(jobs.slice(offset, offset + limit));
-    }, 1000);
+    }, 350);
   });
 };

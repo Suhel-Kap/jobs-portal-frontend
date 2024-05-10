@@ -1,28 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-
-export interface Job {
-  jdUid: string;
-  jdLink: string;
-  jobDetailsFromCompany: string;
-  maxJdSalary: number | null;
-  minJdSalary: number | null;
-  salaryCurrencyCode: string;
-  location: string;
-  minExp: number | null;
-  maxExp: number | null;
-  jobRole: string;
-  companyName: string;
-  logoUrl: string;
-}
+import { Job } from "../types";
 
 export interface JobsState {
   jobs: Job[];
+  filteredJobs: Job[];
 }
 
 const initialState: JobsState = {
   jobs: [],
+  filteredJobs: [],
 };
 
 export const jobSlice = createSlice({
@@ -30,12 +18,15 @@ export const jobSlice = createSlice({
   initialState,
   reducers: {
     setJobs: (state, action: PayloadAction<Job[]>) => {
-      state.jobs = action.payload;
+      state.jobs = [...state.jobs, ...action.payload];
+    },
+    setFilteredJobs: (state, action: PayloadAction<Job[]>) => {
+      state.filteredJobs = action.payload;
     },
   },
 });
 
-export const { setJobs } = jobSlice.actions;
+export const { setJobs, setFilteredJobs } = jobSlice.actions;
 
 export const getJobs = (state: RootState) => state.jobs.jobs;
 
