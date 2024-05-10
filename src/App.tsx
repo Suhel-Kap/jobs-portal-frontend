@@ -1,10 +1,10 @@
 import React from "react";
-import { Button } from "@mui/material";
+import "./App.css";
 import JobsList from "./app/components/JobsList";
 
 function App() {
   return (
-    <div>
+    <div className="app">
       <JobsList />
     </div>
   );
