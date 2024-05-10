@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
 import { getJobs, setJobs } from "../reducers/jobsSlice";
 import { Job } from "../types";
@@ -30,7 +30,7 @@ function JobsList() {
   const handleScroll = () => {
     // check if the user has scrolled to the bottom of the page
     if (
-      window.innerHeight + document.documentElement.scrollTop ===
+      window.innerHeight + document.scrollingElement?.scrollTop! ===
       document.documentElement.offsetHeight
     ) {
       console.log("Scrolled to the bottom", offset + limit);
