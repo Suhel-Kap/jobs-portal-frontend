@@ -69,6 +69,7 @@ const MinBasePay = () => {
       value={options.find((option) => option.value === selectedBasePay)}
       onChange={(_, v) => handleChange(v?.value || 0)}
       className={styles.filterInput}
+      style={{ width: "150px" }}
       renderInput={(params) => (
         <TextField {...params} label="Minimum Base Pay" variant="outlined" />
       )}

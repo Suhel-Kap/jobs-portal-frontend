@@ -29,6 +29,7 @@ const MinimumExperience = () => {
       value={selectedExperience}
       onChange={(_, v) => handleChange(v!)}
       className={styles.filterInput}
+      style={{ width: "105px" }}
       renderInput={(params) => (
         <TextField {...params} label="Min Exp" variant="outlined" />
       )}

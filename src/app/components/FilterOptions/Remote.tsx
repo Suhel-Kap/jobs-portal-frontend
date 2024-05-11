@@ -27,6 +27,7 @@ const Remote = () => {
       value={selectedRemote}
       onChange={(_, v) => handleChange(v!)}
       className={styles.filterInput}
+      style={{ width: "100px" }}
       renderInput={(params) => (
         <TextField {...params} label="Remote" variant="outlined" />
       )}

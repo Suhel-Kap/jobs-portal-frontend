@@ -35,8 +35,17 @@ const Location = () => {
       value={selectedLocation}
       onChange={(_, v) => handleChange(v)}
       className={styles.filterInput}
+      limitTags={1}
       renderInput={(params) => (
-        <TextField {...params} label="Location" variant="outlined" />
+        <TextField
+          {...params}
+          label="Location"
+          variant="outlined"
+          InputProps={{
+            ...params.InputProps,
+            style: { textTransform: "capitalize" },
+          }}
+        />
       )}
     />
   );
