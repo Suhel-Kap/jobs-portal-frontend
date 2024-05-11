@@ -1,13 +1,19 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { useState } from "react";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { setTechStack } from "../../reducers/filterSlice";
 import styles from "../../styles/FilterOptions.module.css";
 
 const TechStack = () => {
   const [selectedTechStack, setSelectedTechStack] = useState<Array<string>>([]);
+
+  const dispatch = useAppDispatch();
+
   const options = ["frontend", "ios", "android", "tech lead", "backend"];
 
   const handleChange = (value: string[]) => {
     setSelectedTechStack(value);
+    dispatch(setTechStack(value));
   };
 
   const filteredOptions = options.filter(

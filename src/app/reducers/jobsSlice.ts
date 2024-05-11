@@ -40,5 +40,6 @@ export const { setJobs, setFilteredJobs, setTotalJobs, setTotalFilteredJobs } =
   jobSlice.actions;
 
 export const getJobs = (state: RootState) => state.jobs.jobs;
+export const getFilteredJobs = (state: RootState) => state.jobs.filteredJobs;
 
 export default jobSlice.reducer;

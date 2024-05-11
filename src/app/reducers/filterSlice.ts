@@ -3,11 +3,27 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
 export interface FilterState {
-  experience: number;
+  filters: {
+    minimumExperience: number;
+    location: string[];
+    remote: string;
+    techStack: string[];
+    jobRole: string[];
+    companyName: string;
+    minimumSalary: number;
+  };
 }
 
 const initialState: FilterState = {
-  experience: 0,
+  filters: {
+    minimumExperience: 0,
+    location: [],
+    remote: "",
+    techStack: [],
+    jobRole: [],
+    companyName: "",
+    minimumSalary: 0,
+  },
 };
 
 export const filterSlice = createSlice({
@@ -15,13 +31,39 @@ export const filterSlice = createSlice({
   initialState,
   reducers: {
     setExperience: (state, action: PayloadAction<number>) => {
-      state.experience = action.payload;
+      state.filters.minimumExperience = action.payload;
+    },
+    setLocation: (state, action: PayloadAction<string[]>) => {
+      state.filters.location = action.payload;
+    },
+    setRemote: (state, action: PayloadAction<string>) => {
+      state.filters.remote = action.payload;
+    },
+    setTechStack: (state, action: PayloadAction<string[]>) => {
+      state.filters.techStack = action.payload;
+    },
+    setJobRole: (state, action: PayloadAction<string[]>) => {
+      state.filters.jobRole = action.payload;
+    },
+    setCompanyName: (state, action: PayloadAction<string>) => {
+      state.filters.companyName = action.payload;
+    },
+    setMinimumSalary: (state, action: PayloadAction<number>) => {
+      state.filters.minimumSalary = action.payload;
     },
   },
 });
 
-export const { setExperience } = filterSlice.actions;
+export const {
+  setExperience,
+  setRemote,
+  setJobRole,
+  setLocation,
+  setTechStack,
+  setCompanyName,
+  setMinimumSalary,
+} = filterSlice.actions;
 
-export const selectExperience = (state: RootState) => state.filter.experience;
+export const selectFilters = (state: RootState) => state.filter.filters;
 
 export default filterSlice.reducer;

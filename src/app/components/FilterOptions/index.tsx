@@ -11,12 +11,12 @@ function FilterOptions() {
   return (
     <div className={styles.container}>
       <MinimumExperience />
-      <CompanyName />
       <Location />
       <Remote />
       <TechStack />
       <Role />
       <MinBasePay />
+      <CompanyName />
     </div>
   );
 }

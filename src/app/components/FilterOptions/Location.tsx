@@ -1,9 +1,14 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { useState } from "react";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { setLocation } from "../../reducers/filterSlice";
 import styles from "../../styles/FilterOptions.module.css";
 
 const Location = () => {
   const [selectedLocation, setSelectedLocation] = useState<Array<string>>([]);
+
+  const dispatch = useAppDispatch();
+
   const options = [
     "delhi ncr",
     "mumbai",
@@ -15,6 +20,7 @@ const Location = () => {
 
   const handleChange = (value: string[]) => {
     setSelectedLocation(value);
+    dispatch(setLocation(value));
   };
 
   const filteredOptions = options.filter(
