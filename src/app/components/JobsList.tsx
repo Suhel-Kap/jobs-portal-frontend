@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
 import { getJobs, setJobs } from "../reducers/jobsSlice";
 import { Job } from "../types";
@@ -46,7 +46,6 @@ function JobsList() {
 
   return (
     <div>
-      <h1>Jobs List</h1>
       <div className={styles.grid}>
         {jobs.map((job) => (
           <JobsCard key={job.jdUid} job={job} />

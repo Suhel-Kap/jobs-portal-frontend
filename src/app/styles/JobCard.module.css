@@ -37,6 +37,7 @@
     margin-top: 0;
     margin-bottom: 0;
     text-transform: capitalize;
+    letter-spacing: 0.4px;
 }
 
 .jobRole {
@@ -45,8 +46,7 @@
     color: black;
     font-weight: 500;
     text-transform: capitalize;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 5px 0;
 }
 
 .estimatedSalary {
