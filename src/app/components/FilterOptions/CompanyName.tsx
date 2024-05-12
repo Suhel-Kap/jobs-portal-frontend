@@ -10,10 +10,10 @@ const CompanyName = () => {
 
   const dispatch = useAppDispatch();
 
+  // Dispatch the company name after 500ms of inactivity
   const handleCompanyNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value;
     setCompany(input);
-    console.log(input);
 
     // Clear the previous timer if exists
     if (timer) {

@@ -1,5 +1,6 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { useState } from "react";
+import { ROLE_OPTIONS } from "../../constants/filterData";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { setTechStack } from "../../reducers/filterSlice";
 import styles from "../../styles/FilterOptions.module.css";
@@ -9,14 +10,13 @@ const TechStack = () => {
 
   const dispatch = useAppDispatch();
 
-  const options = ["frontend", "ios", "android", "tech lead", "backend"];
-
   const handleChange = (value: string[]) => {
     setSelectedTechStack(value);
     dispatch(setTechStack(value));
   };
 
-  const filteredOptions = options.filter(
+  // Filter out the selected options from the available options
+  const filteredOptions = ROLE_OPTIONS.filter(
     (option) => !selectedTechStack.includes(option),
   );
 

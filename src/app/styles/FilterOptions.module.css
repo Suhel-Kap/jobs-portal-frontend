@@ -9,8 +9,8 @@
 }
 
 .filterInput {
-    margin: 10px;
-    width: 200px;
+    margin: 10px 8px;
+    width: 219px;
     flex-grow: 1;
     max-width: 100%;
 }

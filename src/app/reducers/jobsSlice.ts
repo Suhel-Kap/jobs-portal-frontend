@@ -6,15 +6,11 @@ import { Job } from "../types";
 export interface JobsState {
   jobs: Job[];
   filteredJobs: Job[];
-  totalJobs: number;
-  totalFilteredJobs: number;
 }
 
 const initialState: JobsState = {
   jobs: [],
   filteredJobs: [],
-  totalJobs: 0,
-  totalFilteredJobs: 0,
 };
 
 export const jobSlice = createSlice({
@@ -27,17 +23,10 @@ export const jobSlice = createSlice({
     setFilteredJobs: (state, action: PayloadAction<Job[]>) => {
       state.filteredJobs = action.payload;
     },
-    setTotalJobs: (state, action: PayloadAction<number>) => {
-      state.totalJobs = action.payload;
-    },
-    setTotalFilteredJobs: (state, action: PayloadAction<number>) => {
-      state.totalFilteredJobs = action.payload;
-    },
   },
 });
 
-export const { setJobs, setFilteredJobs, setTotalJobs, setTotalFilteredJobs } =
-  jobSlice.actions;
+export const { setJobs, setFilteredJobs } = jobSlice.actions;
 
 export const getJobs = (state: RootState) => state.jobs.jobs;
 export const getFilteredJobs = (state: RootState) => state.jobs.filteredJobs;

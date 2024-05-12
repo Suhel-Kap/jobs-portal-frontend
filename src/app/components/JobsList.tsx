@@ -22,6 +22,7 @@ function JobsList() {
   const filteredJobs = useAppSelector(getFilteredJobs);
   const filters = useAppSelector(selectFilters);
 
+  // This useEffect is used to fetch more data
   useEffect(() => {
     console.log("Fetching jobs", limit, offset);
     fetchJobs(limit, offset)
@@ -53,8 +54,6 @@ function JobsList() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  console.log("JobsList rendered", jobs.length, filteredJobs.length);
 
   return (
     <div className={styles.container}>

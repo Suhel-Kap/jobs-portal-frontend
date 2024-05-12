@@ -107,7 +107,7 @@
     color: #2c2adb;
     letter-spacing: 0.5px;
     cursor: pointer;
-    z-index: 1; /* Add a higher z-index to appear above the gradient */
+    z-index: 1;
 }
 
 .modalContent {

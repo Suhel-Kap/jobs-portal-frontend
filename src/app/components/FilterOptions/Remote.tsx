@@ -1,5 +1,6 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { useState } from "react";
+import { REMOTE_OPTIONS } from "../../constants/filterData";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { setRemote } from "../../reducers/filterSlice";
 import styles from "../../styles/FilterOptions.module.css";
@@ -9,14 +10,13 @@ const Remote = () => {
 
   const dispatch = useAppDispatch();
 
-  const options = ["remote", "on-site"];
-
   const handleChange = (value: string) => {
     setSelectedRemote(value);
     dispatch(setRemote(value));
   };
 
-  const filteredOptions = options.filter(
+  // Filter out the selected remote option from the options
+  const filteredOptions = REMOTE_OPTIONS.filter(
     (option) => !selectedRemote?.includes(option),
   );
 

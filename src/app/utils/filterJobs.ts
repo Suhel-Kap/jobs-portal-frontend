@@ -2,6 +2,7 @@ import { FilterState } from "../reducers/filterSlice";
 import { Job } from "../types";
 
 const filterJobs = (jobs: Job[], filters: FilterState["filters"]): Job[] => {
+  // Go through all the jobs, and check if each job matches the filters the user has selected
   return jobs.filter((job) => {
     const {
       minimumExperience,

@@ -15,6 +15,8 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
 );
 root.render(
+  // Provider is a component that makes the Redux store available to any
+  // nested components that need to access the Redux store.
   <Provider store={store}>
     <App />
   </Provider>,

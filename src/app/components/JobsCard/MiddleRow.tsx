@@ -2,6 +2,7 @@ import { Job } from "../../types";
 import styles from "../../styles/JobCard.module.css";
 import { useState } from "react";
 import { Modal } from "@mui/material";
+import EstimatedSalary from "./EstimatedSalary";
 
 function MiddleRow({ job }: { job: Job }) {
   const [showModal, setShowModal] = useState(false);
@@ -16,20 +17,10 @@ function MiddleRow({ job }: { job: Job }) {
   return (
     <div className={styles.middleRow}>
       <div>
-        {/* if both, min and max salary are present, then show both
-      if only min salary is present, then show only min salary
-      if only max salary is present, then show only max salary
-      if both are not present, then show "Not Specified" */}
-        <p className={styles.estimatedSalary}>
-          Estimated Salary:{" "}
-          {job.minJdSalary && job.maxJdSalary
-            ? `₹${job.minJdSalary} - ${job.maxJdSalary} LPA ✅`
-            : job.minJdSalary
-              ? `₹${job.minJdSalary} LPA ✅`
-              : job.maxJdSalary
-                ? `₹${job.maxJdSalary} LPA ✅`
-                : "Not Specified"}
-        </p>
+        <EstimatedSalary
+          minJdSalary={job.minJdSalary}
+          maxJdSalary={job.maxJdSalary}
+        />
       </div>
       <div className={styles.jobDescription}>
         <p className={styles.aboutCompany}>About Company</p>

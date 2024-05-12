@@ -1,5 +1,6 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { useState } from "react";
+import { LOCATION_OPTIONS } from "../../constants/filterData";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { setLocation } from "../../reducers/filterSlice";
 import styles from "../../styles/FilterOptions.module.css";
@@ -9,21 +10,13 @@ const Location = () => {
 
   const dispatch = useAppDispatch();
 
-  const options = [
-    "delhi ncr",
-    "mumbai",
-    "chennai",
-    "hyderabad",
-    "pune",
-    "bangalore",
-  ];
-
   const handleChange = (value: string[]) => {
     setSelectedLocation(value);
     dispatch(setLocation(value));
   };
 
-  const filteredOptions = options.filter(
+  // Keep only the options that are not selected in the options list
+  const filteredOptions = LOCATION_OPTIONS.filter(
     (option) => !selectedLocation.includes(option),
   );
 

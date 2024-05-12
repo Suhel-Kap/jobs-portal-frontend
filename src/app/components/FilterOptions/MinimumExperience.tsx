@@ -1,5 +1,6 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { useState } from "react";
+import { MINIMUM_EXPERIENCE_OPTIONS } from "../../constants/filterData";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { setExperience } from "../../reducers/filterSlice";
 import styles from "../../styles/FilterOptions.module.css";
@@ -9,16 +10,16 @@ const MinimumExperience = () => {
 
   const dispatch = useAppDispatch();
 
-  const options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-
   const handleChange = (value: string) => {
     setSelectedExperience(value);
-    console.log(value, "fds");
+    // If user clears the input, the value will be null
+    // In that case, set the experience to 0
     if (value === null) return dispatch(setExperience(0));
     dispatch(setExperience(parseInt(value)));
   };
 
-  const filteredOptions = options.filter(
+  // Remove the selected experience from the options
+  const filteredOptions = MINIMUM_EXPERIENCE_OPTIONS.filter(
     (option) => option !== selectedExperience,
   );
 
