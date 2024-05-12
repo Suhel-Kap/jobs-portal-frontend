@@ -24,7 +24,6 @@ function JobsList() {
 
   // This useEffect is used to fetch more data
   useEffect(() => {
-    console.log("Fetching jobs", limit, offset);
     fetchJobs(limit, offset)
       .then((data) => {
         dispatch(setJobs(data as Job[]));
@@ -34,11 +33,15 @@ function JobsList() {
       });
   }, [offset, dispatch]);
 
+  // This useEffect is triggered whenever new jobs are fetched or the filters are updated
+  // This would set the filtered jobs based on the filters or set the filtered jobs to all jobs
+  // if no filters are applied
   useEffect(() => {
     const jobsFiltered = filterJobs(jobs, filters);
     dispatch(setFilteredJobs(jobsFiltered));
   }, [dispatch, filters, jobs]);
 
+  // This function is used to handle the infinite scroll
   const handleScroll = () => {
     // check if the user has scrolled to the bottom of the page
     if (
@@ -51,7 +54,10 @@ function JobsList() {
   };
 
   useEffect(() => {
+    // Add an event listener to listen for scroll events when the component mounts
     window.addEventListener("scroll", handleScroll);
+
+    // Remove the event listener when the component unmounts, necessary to prevent memory leaks
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -62,6 +68,7 @@ function JobsList() {
           <JobsCard key={job.jdUid} job={job} />
         ))}
       </div>
+      {/* if no jobs match the filters, show no jobs found */}
       {filteredJobs.length === 0 && (
         <div className={styles.noJobs}>
           <h2 className={styles.noJobsHeader}>No jobs found</h2>
