@@ -1,18 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-
-export interface FilterState {
-  filters: {
-    minimumExperience: number;
-    location: string[];
-    remote: string;
-    techStack: string[];
-    jobRole: string[];
-    companyName: string;
-    minimumSalary: number;
-  };
-}
+import { FilterState } from "../types";
 
 const initialState: FilterState = {
   filters: {

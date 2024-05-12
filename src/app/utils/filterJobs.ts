@@ -1,5 +1,4 @@
-import { FilterState } from "../reducers/filterSlice";
-import { Job } from "../types";
+import { FilterState, Job } from "../types";
 
 const filterJobs = (jobs: Job[], filters: FilterState["filters"]): Job[] => {
   // Go through all the jobs, and check if each job matches the filters the user has selected

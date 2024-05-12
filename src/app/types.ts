@@ -12,3 +12,20 @@ export interface Job {
   companyName: string;
   logoUrl: string;
 }
+
+export interface JobsState {
+  jobs: Job[];
+  filteredJobs: Job[];
+}
+
+export interface FilterState {
+  filters: {
+    minimumExperience: number;
+    location: string[];
+    remote: string;
+    techStack: string[];
+    jobRole: string[];
+    companyName: string;
+    minimumSalary: number;
+  };
+}
